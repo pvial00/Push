@@ -26,6 +26,3 @@ def push_demo(size):
     p2 = pow(p1B, sk, SB)
     p2B = pow(p1, skB, SB)
     print "p2", p2, p2B
-
-push_demo(8)
-
