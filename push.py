@@ -12,17 +12,31 @@ def keygen(size):
     C, K = genBase(size)
     N = A * B
     sk = number.getRandomRange(1, (B - 1))
-    return sk, B, N, A
+    return sk, N, A
 
 def push_demo(size):
-    sk, pk, n, M = keygen(size)
-    skB, pkB, nB, MB = keygen(size)
-    U = n * nB
-    S = M * nB
-    SB = MB * n
-    p1 = pow(pk, sk, U)
-    p1B = pow(pk, skB, U)
-    print "p1", p1, p1B
-    p2 = pow(p1B, sk, SB)
-    p2B = pow(p1, skB, SB)
-    print "p2", p2, p2B
+    skA, nA, MA = keygen(size)
+    skB, nB, MB = keygen(size)
+    U = nA * nB
+    S = MA * nB
+    SB = MB * nA
+    U = nA * nB
+    S = MA * U
+    SB = MB * U
+    SS = S * SB
+    y = number.getRandomRange(1, (SS - 1))
+    yB = number.getRandomRange(1, (SS - 1))
+    p1 = pow(y, skA, SS)
+    p1B = pow(y, skB, SS)
+    print p1, p1B
+    p2 = pow(p1B, skA, SS)
+    p2B = pow(p1, skB, SS)
+    print p2, p2B
+    p3 = pow(yB, skA, p2)
+    p3B = pow(yB, skB, p2B)
+    print p3, p3B
+    p4 = pow(p3B, skA, p2)
+    p4B = pow(p3, skB, p2B)
+    print p4, p4B
+
+push_demo(8)
