@@ -51,17 +51,17 @@ def discreteLogarithm(a, b, m):
 from Crypto.Util import number
 
 def genBase(size):
-    A = number.getRandomNBitInteger(size)
-    B = number.getRandomNBitInteger(size)
+    A = number.getPrime(size)
+    B = number.getPrime(size)
     while B == A:
-        B = number.getRandomNBitInteger(size)
+        B = number.getPrime(size)
     return A, B
     
 
 def keygen(size):
     A, B = genBase(size)
     N = A * B
-    sk = number.getRandomRange(1, (B - 1))
+    sk = number.getRandomRange(1, (N - 1))
     return sk, B, N, A
     
 size = 4
