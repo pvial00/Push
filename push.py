@@ -10,7 +10,7 @@ def genBase(size):
 def keygen(size):
     A, B = genBase(size)
     N = A * B
-    sk = number.getRandomRange(1, (B - 1))
+    sk = number.getRandomRange(1, (N - 1))
     return sk, N, A
 
 def push_demo(size):
