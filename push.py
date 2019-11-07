@@ -9,7 +9,6 @@ def genBase(size):
 
 def keygen(size):
     A, B = genBase(size)
-    C, K = genBase(size)
     N = A * B
     sk = number.getRandomRange(1, (B - 1))
     return sk, N, A
