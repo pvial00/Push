@@ -17,9 +17,6 @@ def push_demo(size):
     skA, nA, MA = keygen(size)
     skB, nB, MB = keygen(size)
     U = nA * nB
-    S = MA * nB
-    SB = MB * nA
-    U = nA * nB
     S = MA * U
     SB = MB * U
     SS = S * SB
@@ -37,5 +34,3 @@ def push_demo(size):
     p4 = pow(p3B, skA, p2)
     p4B = pow(p3, skB, p2B)
     print p4, p4B
-
-push_demo(8)
