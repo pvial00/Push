@@ -65,40 +65,40 @@ def keygen(size):
     return sk, B, N, A
     
 size = 3
-print "Generating Alice and Bob's keys"
+print("Generating Alice and Bob's keys")
 skA, pkA, nA, MA = keygen(size)
 skB, pkB, nB, MB = keygen(size)
 
-print "Alice keys"
-print skA, pkA, nA, MA
-print "Bob keys"
-print skB, pkB, nB, MB
+print("Alice keys")
+print(skA, pkA, nA, MA)
+print("Bob keys")
+print(skB, pkB, nB, MB)
 U = nA * nB
 S = MA * U
 SB = MB * U
 SS = S * SB
-print "Generating ephemeral public keys"
+print("Generating ephemeral public keys")
 y = number.getRandomRange(1, (SS - 1))
 yB = number.getRandomRange(1, (SS - 1))
-print y, yB
+print(y, yB)
 p1 = pow(y, skA, SS)
 p1B = pow(y, skB, SS)
-print "p1", p1, p1B
+print("p1", p1, p1B)
 p2 = pow(p1B, skA, SS)
 p2B = pow(p1, skB, SS)
-print p2, p2B
+print(p2, p2B)
 p3 = pow(yB, skA, p2)
 p3B = pow(yB, skB, p2B)
-print p3, p3B
+print(p3, p3B)
 p4 = pow(p3B, skA, p2)
 p4B = pow(p3, skB, p2B)
-print p4, p4B
-print "Cracking with DL"
+print(p4, p4B)
+print("Cracking with DL")
 Osk = discreteLogarithm(y, p1, SS)
-print Osk
+print(Osk)
 print "Got the secret modulus"
 o1 = pow(p1B, Osk, SS)
-print o1
-print "Can't crack it"
+print(o1)
+print("Can't crack it")
 o2 = pow(p3B, Osk, o1)
-print o2
+print(o2)

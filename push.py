@@ -24,13 +24,13 @@ def push_demo(size):
     yB = number.getRandomRange(1, (SS - 1))
     p1 = pow(y, skA, SS)
     p1B = pow(y, skB, SS)
-    print p1, p1B
+    print(p1, p1B)
     p2 = pow(p1B, skA, SS)
     p2B = pow(p1, skB, SS)
-    print p2, p2B
+    print(p2, p2B)
     p3 = pow(yB, skA, p2)
     p3B = pow(yB, skB, p2B)
-    print p3, p3B
+    print(p3, p3B)
     p4 = pow(p3B, skA, p2)
     p4B = pow(p3, skB, p2B)
-    print p4, p4B
+    print(p4, p4B)
